@@ -14,16 +14,28 @@ html{
 body{
     margin: 0;
     background: var(--background);
+    display: grid;
+    grid-gap:10px;
+    grid-template-rows: 5em repeat(3, 1fr);
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-areas:
+    "nav nav nav"
+    "hero bio bio"
+    "hero skills skills"
+    ".  . .";
+    height: 100vh;
 }
 
 /* Navigation Styles */
 
 header{
+    grid-area: nav;
+    position: sticky;
     background: var(--header-bg);
-    position:fixed;
     width: 100%;
     text-align: center;
     z-index: 1000;
+    top:0;
 }
 
 header h1{
@@ -68,6 +80,8 @@ nav a{
                 text-shadow 150ms ease-in-out,
                 color 250ms ease-in-out;
 }
+
+/* NAVIGATION ANIMATION */
 
 nav a:hover{
     color: var(--neongreen);
@@ -119,6 +133,12 @@ nav a:hover{
 .nav-toggle-label span::after{
     top:7px;
 }
+
+}
+
+
+
+/* MEDIA QUERIES */
 
 /* Bootstrap x-small */
 @media(min-width:576px){
@@ -177,7 +197,7 @@ nav a:hover{
         transform: scale(1,1);
         transform-origin: left;
         box-shadow: var(--shadow);
-        transition: 
+        transition:
         transform 350ms ease-in-out 150ms,
         background 350ms ease-in-out,
         box-shadow 350ms ease-in-out;
@@ -187,6 +207,29 @@ nav a:hover{
 
 }
 
+.hero{
+  grid-area: hero;
+  background:#52a853;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.hero .picture{
+  grid-row: 1 / 2;
+}
+
+.hero .picture img{
+  width: 50%;
+  border-radius: 50%;
+}
+
+.bio{
+  grid-area:bio;
+}
+
+.skills{
+  grid-area: skills;
+}
 /* Bootstrap Large */
 @media (min-width: 992px){
 
